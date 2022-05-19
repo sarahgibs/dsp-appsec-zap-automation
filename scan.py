@@ -34,7 +34,7 @@ def cookieauth(zap,contextID,context):
     userid = zap.users.users_list(contextID)[0]["id"]
     #this is the secret sauce for using cookies. The user above is now associated with the active cookie.
     #It should always choose the newest one.
-    sessions=zap.httpsessions.sessions(site = context + ":443")
+    sessions=zap.httpsessions.sessions(site = context)
     sessionName=sessions[-1]["session"][0]
     zap.users.set_authentication_credentials(contextID,userid,"sessionName=" + sessionName)
 
@@ -142,7 +142,7 @@ def loginAndScan(proxy, site, env):
     while (zap.ascan.status == "running"):
         logging.debug("Active scanner running")
         time.sleep(5)
-    logging.debug("Active scanner complete")
+    logging.info("Active scanner complete")
     pullReport(zap, context, "https://" + domain, site)
 
     if authtype == "token":
@@ -151,7 +151,7 @@ def loginAndScan(proxy, site, env):
 
 
 if __name__ == "__main__":
-    load_dotenv("test.env")
+    load_dotenv("scan.env")
     logging.basicConfig(level="INFO")
 
     proxy = str(os.getenv("PROXY")) + ":" + str(os.getenv("PORT"))

@@ -18,3 +18,7 @@ You will also need to install the latest chrome driver, https://sites.google.com
 Once ZAP is up and running, the scans specified in sites.json can be run by running scan.py. When each scan has finished it will output an xml report to the tmp/ directory.
 
 (This would probably be good in a container.)
+
+## Using the Juice Shop example
+
+
