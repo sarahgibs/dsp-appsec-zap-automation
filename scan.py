@@ -139,6 +139,7 @@ def loginAndScan(proxy, site, env):
 
     #Run active scan as the authenticated user.
     zap.ascan.scan_as_user(contextid=contextID, userid=userId)
+    time.sleep(10)
     while (zap.ascan.status == "running"):
         logging.debug("Active scanner running")
         time.sleep(5)
