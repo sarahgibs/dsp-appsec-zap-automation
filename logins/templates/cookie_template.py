@@ -6,11 +6,6 @@ from selenium.webdriver.common.by import By
 import os
 from zapv2 import ZAPv2
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
-#starter code from https://nander.cc/using-selenium-within-a-docker-container
 
 def set_chrome_options(proxy) -> None:
     """Adds chrome options. 

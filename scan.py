@@ -138,6 +138,8 @@ def loginAndScan(proxy, site, env):
     logging.info("Ajax Spider complete")
 
     #Run active scan as the authenticated user.
+    #Set to 1 minute for demonstration purposes
+    zap.ascan.set_option_max_scan_duration_in_mins(1)
     zap.ascan.scan_as_user(contextid=contextID, userid=userId)
     time.sleep(10)
     while (zap.ascan.status == "running"):
